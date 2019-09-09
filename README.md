@@ -2,7 +2,7 @@
 Had difficulties getting the official newman docker to play nice in K8 so created a new image
 
 ## NewmanVersion
-Rebuilt as of 09/09/2019
+Rebuilt as of 09/09/2019. This was a major version rev of newman so some command line arguments will have broken. Apologies the one which hit me --color which now has to specify on or off. Proper labelling on next change with the newman version there
 
 ## Command
 One of the issues I had was I wanted more control over the command so this image doesn't set one. It's up to you to set it when you configure or instantiate it. That is because for the most part I expect people running newman will want the container either sitting idle for the most part and have commands exec on them or do a one time creation and run
@@ -32,7 +32,7 @@ spec:
       - "newman"
       - "run"
     args: ["MySmokeTest.postman_collection.json", "--environment=myEnv.postman_environment.json",
-          "--color","--reporters=html,cli", "--reporter-html-export=newman-results.html"] 
+          "--color=on","--reporters=html,cli", "--reporter-html-export=newman-results.html"] 
   restartPolicy: Never
   volumes:
   - name: func-api-test
